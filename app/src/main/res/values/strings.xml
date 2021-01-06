@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">TodoApp</string>
+
+    <string name="error_internal_error">Oops! An error has occurred, Please try again.</string>
+    <string name="no_requests_found">No Requests found</string>
+    <string name="error_time_out">No Response!</string>
+    <string name="error_network_error_message">No Internet connection</string>
+    <string name="error_otherNetworkFailure">Unknown network error, please reset your network connection.</string>
+
+</resources>

@@ -1,0 +1,140 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        applicationId "com.example.todoapp"
+        minSdkVersion 23
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+
+        manifestPlaceholders = [
+                'appAuthRedirectScheme': 'abshmrani.com'
+        ]
+    }
+
+    sourceSets {
+        main {
+            java {
+                exclude "$projectDir/schemas"
+            }
+            res {
+                srcDir 'src/main/res-brand'
+            }
+        }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/atomicfu.kotlin_module'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            debuggable true
+        }
+    }
+
+    flavorDimensions 'app'
+    productFlavors {
+        dev {
+            applicationId 'com.example.todoapp'
+            dimension 'app'
+            buildConfigField("String", "SERVER_URL", '"http://46.101.227.235:3030/api/"')
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    implementation project(path: ':domain')
+    implementation project(path: ':data')
+
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    // Androidx
+    implementation "androidx.core:core-ktx:$core_ktx_version"
+    implementation "androidx.appcompat:appcompat:$appcompat_version"
+    implementation "androidx.multidex:multidex:$multidex_version"
+    implementation "androidx.constraintlayout:constraintlayout:$constraintlayout_version"
+    implementation "androidx.preference:preference:$preference_version"
+
+    // Material
+    implementation "com.google.android.material:material:$material_version"
+
+    // Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
+
+    // OkHttp
+    implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
+
+    // Gson
+    implementation "com.google.code.gson:gson:$gson_version"
+
+    // Picasso lib for image loading
+    implementation "com.squareup.picasso:picasso:$picasso_version"
+
+    //timber
+    implementation "com.jakewharton.timber:timber:$timber_version"
+    debugImplementation "com.amitshekhar.android:debug-db:$debug_db_version"
+    implementation "org.greenrobot:eventbus:$eventbus_version"
+
+    // Material dialog
+    implementation "com.afollestad.material-dialogs:core:$material_dialogs_version"
+
+    // testing
+    testImplementation "junit:junit:$junit_version"
+    androidTestImplementation "androidx.test:runner:$runner_version"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
+
+    // RX
+    implementation "io.reactivex.rxjava2:rxandroid:$rx_version"
+
+    // material progressbar
+    implementation "me.zhanghai.android.materialprogressbar:library:$materialprogressbar_version"
+
+    //status bar
+    implementation "com.jaeger.statusbarutil:library:$statusbarutil_version"
+
+    //hilt
+    implementation "com.google.dagger:hilt-android:2.28-alpha"
+    kapt "com.google.dagger:hilt-android-compiler:2.28-alpha"
+
+}
+
+kapt {
+    correctErrorTypes true
+}
