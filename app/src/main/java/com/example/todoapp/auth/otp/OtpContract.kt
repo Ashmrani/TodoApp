@@ -13,6 +13,6 @@ interface OtpContract {
         fun onViewCreated()
         fun onAttachView(view: View)
         fun onDetachView()
-        fun onVerify(otpNumber: String)
+        fun onVerify(otpNumber: String, mobile: String)
     }
 }

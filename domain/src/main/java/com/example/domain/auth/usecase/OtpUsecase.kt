@@ -37,7 +37,7 @@ class OtpUseCase(private val repository: AuthRepository) :
         ): List<ErrorType> {
             val errors = mutableListOf<ErrorType>()
 
-            if (otpNumber.isEmpty() || otpNumber.length > 4) {
+            if (otpNumber.isEmpty()) {
                 errors.add(ErrorType.OTP)
             }
 

@@ -16,7 +16,7 @@ interface AuthApi {
     ): Single<LoginResponse>
 
     @FormUrlEncoded
-    @POST("v1/auth")
+    @POST("v1/auth/otp")
     fun verify(
         @Field("mobile") mobile: String,
         @Field("code") otp: String

@@ -7,7 +7,8 @@
     android:layout_margin="16dp"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".auth.otp.OtpActivity">
+    tools:context=".auth.login.LoginActivity">
+
 
     <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="100dp"
@@ -15,36 +16,16 @@
         android:layout_marginTop="64dp"
         app:srcCompat="@drawable/ic_to_do" />
 
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:gravity="center"
-        android:text="@string/code_was_sent_to"
-        android:textColor="@color/purple_500"
-        android:textSize="16sp" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/phoneNumber"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textColor="@color/purple_500"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        tools:text="0561166658" />
-
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/otpTextInputLayout"
+        android:id="@+id/mobileNumberTextInputLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:hint="@string/code">
+        android:layout_marginTop="32dp"
+        android:hint="@string/phone_number">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/otpTextInputEditText"
+            android:id="@+id/mobileNumberTextInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number" />
@@ -52,12 +33,12 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/verifyButtton"
+        android:id="@+id/loginButtton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:backgroundTint="@color/purple_500"
-        android:text="@string/verify"
+        android:text="@string/login"
         android:textColor="@color/white" />
 
     <ProgressBar
@@ -65,7 +46,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:progressTint="@color/teal_200"
         android:visibility="gone"
         tools:visibility="visible" />
 

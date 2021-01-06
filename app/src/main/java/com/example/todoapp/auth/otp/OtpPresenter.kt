@@ -26,7 +26,7 @@ class OtpPresenter @Inject constructor(
     private var view: OtpContract.View? = null
 
     override fun onViewCreated() {
-        view?.showMobile(session.userDetails.user?.mobile!!)
+        TODO("Not yet implemented")
     }
 
     override fun onAttachView(view: OtpContract.View) {
@@ -38,8 +38,8 @@ class OtpPresenter @Inject constructor(
         this.view = null
     }
 
-    override fun onVerify(otpNumber: String) {
-        otpUseCase.execute(OtpUseCase.Request(otpNumber, session.userDetails.user?.mobile!!))
+    override fun onVerify(otpNumber: String, mobile: String) {
+        otpUseCase.execute(OtpUseCase.Request(mobile, otpNumber))
             .observeOn(uiThread)
             .subscribeOn(ioThread)
             .subscribe(

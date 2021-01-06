@@ -44,7 +44,6 @@ class LoginPresenter @Inject constructor(
             .subscribeOn(ioThread)
             .subscribe(
                 SingleRequestSubscriber({
-                    session.userDetails.user?.mobile = it.mobile
                     view?.success(it.mobile)
                 },
                     { exception ->

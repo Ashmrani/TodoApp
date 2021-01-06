@@ -1,6 +1,5 @@
 package com.example.todoapp.auth.login
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -8,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.todoapp.R
 import com.example.todoapp.auth.otp.OtpActivity
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
@@ -19,7 +19,7 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_login)
 
         presenter.onAttachView(this)
 
@@ -34,7 +34,7 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
     }
 
     override fun success(mobile: String) {
-        startActivity(Intent(this, OtpActivity::class.java))
+        startActivity(OtpActivity.getIntent(mobile, this))
     }
 
     override fun showProgressBar() {

@@ -14,7 +14,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TodoApp"
         android:usesCleartextTraffic="true">
-        <activity android:name=".auth.login.LoginActivity">
+        <activity
+            android:name=".splash.SplashScreenActivity"
+            android:theme="@style/Theme.Design.NoActionBar"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,6 +25,9 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".auth.login.LoginActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".auth.otp.OtpActivity"
             android:screenOrientation="portrait" />
