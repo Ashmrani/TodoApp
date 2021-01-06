@@ -1,18 +1,18 @@
-package com.example.todoapp.auth.login
+package com.example.todoapp.auth.otp
 
-interface LoginContract {
-
+interface OtpContract {
     interface View {
-        fun success(mobile: String)
+        fun success()
         fun showProgressBar()
         fun hideProgressBar()
         fun showError(errorMessage: String)
+        fun showMobile(mobile: String)
     }
 
     interface Presenter{
         fun onViewCreated()
         fun onAttachView(view: View)
         fun onDetachView()
-        fun login(mobile: String)
+        fun onVerify(otpNumber: String)
     }
 }

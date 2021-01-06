@@ -1,7 +1,7 @@
-package com.example.todoapp.auth.login
+package com.example.todoapp.auth.otp
 
-import com.example.domain.auth.usecase.LoginUseCase
-import com.example.domain.base.InvalidLoginInputException
+import com.example.domain.auth.usecase.OtpUseCase
+import com.example.domain.base.InvalidOtpInputException
 import com.example.todoapp.R
 import com.example.todoapp.app.di.IoThreadScheduler
 import com.example.todoapp.app.di.UiThreadScheduler
@@ -13,23 +13,23 @@ import io.reactivex.Scheduler
 import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
-class LoginPresenter @Inject constructor(
+class OtpPresenter @Inject constructor(
     @UiThreadScheduler private val uiThread: Scheduler,
     @IoThreadScheduler private val ioThread: Scheduler,
     private val stringProvider: StringProvider,
-    private val loginUseCase: LoginUseCase,
+    private val otpUseCase: OtpUseCase,
     private val session: Session
-) : LoginContract.Presenter {
+) : OtpContract.Presenter {
 
     private val disposable = CompositeDisposable()
 
-    private var view: LoginContract.View? = null
+    private var view: OtpContract.View? = null
 
     override fun onViewCreated() {
-        TODO("Not yet implemented")
+        view?.showMobile(session.userDetails.user?.mobile!!)
     }
 
-    override fun onAttachView(view: LoginContract.View) {
+    override fun onAttachView(view: OtpContract.View) {
         this.view = view
     }
 
@@ -38,22 +38,23 @@ class LoginPresenter @Inject constructor(
         this.view = null
     }
 
-    override fun login(mobile: String) {
-        loginUseCase.execute(LoginUseCase.Request(mobile))
+    override fun onVerify(otpNumber: String) {
+        otpUseCase.execute(OtpUseCase.Request(otpNumber, session.userDetails.user?.mobile!!))
             .observeOn(uiThread)
             .subscribeOn(ioThread)
             .subscribe(
                 SingleRequestSubscriber({
-                    session.userDetails.user?.mobile = it.mobile
-                    view?.success(it.mobile)
+                    session.token = it.accessToken!!
+                    session.userDetails = it
+                    view?.success()
                 },
                     { exception ->
                         when (exception) {
-                            is InvalidLoginInputException -> {
+                            is InvalidOtpInputException -> {
                                 for (error in exception.errors) {
                                     when (error) {
-                                        LoginUseCase.LoginInputValidator.ErrorType.MOBILE -> view?.showError(
-                                            stringProvider.provide(R.string.enter_valid_mobile)
+                                        OtpUseCase.OtpInputValidator.ErrorType.OTP -> view?.showError(
+                                            stringProvider.provide(R.string.enter_valid_code)
                                         )
                                     }
                                 }

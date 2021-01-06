@@ -6,26 +6,17 @@
     android:layout_margin="16dp"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".auth.login.LoginActivity">
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/phoneNumber"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textSize="18sp"
-        tools:text="Code was sent to 0561166658" />
+    tools:context=".auth.otp.OtpActivity">
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/mobileNumberTextInputLayout"
+        android:id="@+id/otpTextInputLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:hint="@string/phone_number">
+        android:hint="@string/code">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/mobileNumberTextInputEditText"
+            android:id="@+id/otpTextInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number" />
@@ -33,11 +24,11 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/loginButtton"
+        android:id="@+id/verifyButtton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="@string/login" />
+        android:text="@string/verify" />
 
     <ProgressBar
         android:id="@+id/progressBar"

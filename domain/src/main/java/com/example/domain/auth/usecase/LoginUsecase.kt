@@ -4,6 +4,7 @@ import com.example.domain.auth.AuthRepository
 import com.example.domain.comman.SingleUseCase
 import com.example.domain.auth.model.LoginResponse
 import com.example.domain.base.InvalidLoginInputException
+import com.google.gson.annotations.SerializedName
 import io.reactivex.Single
 
 class LoginUseCase(private val repository: AuthRepository) :
@@ -21,6 +22,7 @@ class LoginUseCase(private val repository: AuthRepository) :
     }
 
     class Request(
+        @SerializedName("mobile")
         val mobile: String
     ) : SingleUseCase.Request
 
