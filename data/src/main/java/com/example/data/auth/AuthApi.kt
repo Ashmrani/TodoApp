@@ -9,6 +9,6 @@ interface AuthApi {
 
     @GET("v1/auth")
     fun login(
-        @Field("password") mobile: String
+        @Field("mobile") mobile: String
     ): Single<LoginResponse>
 }
