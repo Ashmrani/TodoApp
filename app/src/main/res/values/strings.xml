@@ -13,5 +13,6 @@
     <string name="code">Code</string>
     <string name="verify">Verify</string>
     <string name="code_was_sent_to">Code was sent to</string>
+    <string name="logout">logout</string>
 
 </resources>

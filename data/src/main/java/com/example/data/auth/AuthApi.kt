@@ -2,7 +2,9 @@ package com.example.data.auth
 
 import com.example.domain.auth.model.LoginResponse
 import com.example.domain.auth.model.UserProfile
+import io.reactivex.Completable
 import io.reactivex.Single
+import retrofit2.http.DELETE
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST
@@ -21,4 +23,7 @@ interface AuthApi {
         @Field("mobile") mobile: String,
         @Field("code") otp: String
     ): Single<UserProfile>
+
+    @DELETE("v1/auth")
+    fun logout(): Completable
 }

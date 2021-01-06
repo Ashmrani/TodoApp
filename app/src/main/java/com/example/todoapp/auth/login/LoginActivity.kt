@@ -8,7 +8,6 @@ import com.example.todoapp.R
 import com.example.todoapp.auth.otp.OtpActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
 @AndroidEntryPoint

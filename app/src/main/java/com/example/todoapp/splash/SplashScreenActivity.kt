@@ -29,7 +29,7 @@ class SplashScreenActivity : AppCompatActivity() {
     private fun checkUserSignedIn() {
         val session = Session(PreferenceUtil(this))
 
-        if (session.token.isEmpty()) {
+        if (session.token.isBlank()) {
             startActivity(Intent(this, LoginActivity::class.java))
         } else {
             startActivity(Intent(this, MainActivity::class.java))

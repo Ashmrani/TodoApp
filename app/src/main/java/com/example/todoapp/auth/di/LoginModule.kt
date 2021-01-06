@@ -4,6 +4,7 @@ import com.example.data.auth.AuthApi
 import com.example.data.auth.AuthImpl
 import com.example.domain.auth.AuthRepository
 import com.example.domain.auth.usecase.LoginUseCase
+import com.example.domain.auth.usecase.LogoutUseCase
 import com.example.domain.auth.usecase.OtpUseCase
 import dagger.Module
 import dagger.Provides
@@ -27,14 +28,16 @@ object LoginModule {
     fun provideAuthRepository(service: AuthApi): AuthRepository =
         AuthImpl(service)
 
-
     @ActivityScoped
     @Provides
     fun provideLoginUseCase(authRepository: AuthRepository) = LoginUseCase(authRepository)
 
-
     @ActivityScoped
     @Provides
     fun provideOtpUseCase(authRepository: AuthRepository) = OtpUseCase(authRepository)
+
+    @ActivityScoped
+    @Provides
+    fun provideLogoutUseCase(authRepository: AuthRepository) = LogoutUseCase(authRepository)
 
 }

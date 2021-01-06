@@ -16,6 +16,7 @@ class SingleRequestSubscriber<T>(
     private val onShowProgress: (show: Boolean) -> Unit = onProgressStub,
     private val onSubscribed: (d: Disposable) -> Boolean = onSubscribeStub
 ) : SingleObserver<T> {
+
     override fun onSuccess(t: T) {
         onShowProgress(false)
         onNext(t)

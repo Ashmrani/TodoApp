@@ -4,7 +4,9 @@ import com.example.domain.auth.AuthRepository
 import com.example.domain.auth.model.LoginResponse
 import com.example.domain.auth.model.UserProfile
 import com.example.domain.auth.usecase.LoginUseCase
+import com.example.domain.auth.usecase.LogoutUseCase
 import com.example.domain.auth.usecase.OtpUseCase
+import io.reactivex.Completable
 import io.reactivex.Single
 
 class AuthImpl(private val service: AuthApi) : AuthRepository {
@@ -15,5 +17,9 @@ class AuthImpl(private val service: AuthApi) : AuthRepository {
 
     override fun verifyNumber(requestValue: OtpUseCase.Request): Single<UserProfile> {
         return service.verify(requestValue.mobile, requestValue.otp)
+    }
+
+    override fun logout(requestValue: LogoutUseCase.Request): Completable {
+        return service.logout()
     }
 }
