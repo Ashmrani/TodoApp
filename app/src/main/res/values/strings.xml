@@ -14,5 +14,6 @@
     <string name="verify">Verify</string>
     <string name="code_was_sent_to">Code was sent to</string>
     <string name="logout">logout</string>
+    <string name="add_note">Add todo</string>
 
 </resources>

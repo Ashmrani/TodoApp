@@ -1,11 +1,8 @@
-package com.example.todoapp.todo
+package com.example.todoapp.todo.main
 
 interface MainContract {
     interface View {
-
         fun navigateToLogin()
-        fun showProgressBar()
-        fun hideProgressBar()
         fun showError(errorMessage: String)
     }
 
@@ -14,5 +11,6 @@ interface MainContract {
         fun onAttachView(view: View)
         fun onDetachView()
         fun logout()
+        fun addTodo()
     }
 }

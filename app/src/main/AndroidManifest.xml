@@ -32,7 +32,7 @@
             android:name=".auth.otp.OtpActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".todo.MainActivity"
+            android:name=".todo.main.MainActivity"
             android:screenOrientation="portrait" />
     </application>
 

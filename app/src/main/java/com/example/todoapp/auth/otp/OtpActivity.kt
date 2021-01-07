@@ -7,7 +7,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.todoapp.R
-import com.example.todoapp.todo.MainActivity
+import com.example.todoapp.todo.main.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_otp.*
 import javax.inject.Inject

@@ -1,4 +1,4 @@
-package com.example.todoapp.todo
+package com.example.todoapp.todo.main
 
 import com.example.domain.auth.usecase.LogoutUseCase
 import com.example.todoapp.app.di.IoThreadScheduler
@@ -36,13 +36,18 @@ class MainPresenter @Inject constructor(
         this.view = null
     }
 
+    override fun addTodo() {
+        TODO("Not yet implemented")
+    }
+
     override fun logout() {
         logoutUseCase.execute(LogoutUseCase.Request())
             .observeOn(uiThread)
             .subscribeOn(ioThread)
-            .subscribe(CompletableRequestSubscriber({
-                session.logout()
-                view?.navigateToLogin()
+            .subscribe(
+                CompletableRequestSubscriber({
+                    session.logout()
+                    view?.navigateToLogin()
                 },
                     { exception ->
                         view?.showError(
@@ -60,12 +65,7 @@ class MainPresenter @Inject constructor(
                             )
                         )
                     },
-                    { showProgressBar ->
-                        if (showProgressBar) {
-                            view?.showProgressBar()
-                        } else {
-                            view?.hideProgressBar()
-                        }
+                    {
                     },
                     {
                         disposable.add(it)

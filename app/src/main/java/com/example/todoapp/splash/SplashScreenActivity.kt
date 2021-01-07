@@ -7,7 +7,7 @@ import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import com.example.todoapp.R
 import com.example.todoapp.auth.login.LoginActivity
-import com.example.todoapp.todo.MainActivity
+import com.example.todoapp.todo.main.MainActivity
 import com.example.todoapp.utils.PreferenceUtil
 import com.example.todoapp.utils.Session
 

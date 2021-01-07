@@ -1,20 +1,20 @@
-package com.example.todoapp.todo
+package com.example.todoapp.todo.main
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.todoapp.R
 import com.example.todoapp.auth.login.LoginActivity
-import com.example.todoapp.auth.login.LoginPresenter
+import com.example.todoapp.todo.list.TodoFragment
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class MainActivity: AppCompatActivity(), MainContract.View {
+class MainActivity : AppCompatActivity(), MainContract.View {
 
     @Inject
     lateinit var presenter: MainPresenter
@@ -22,6 +22,11 @@ class MainActivity: AppCompatActivity(), MainContract.View {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        supportFragmentManager.beginTransaction()
+            .add(R.id.contentView, TodoFragment.getInstance())
+            .commit()
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -45,15 +50,7 @@ class MainActivity: AppCompatActivity(), MainContract.View {
         finish()
     }
 
-    override fun showProgressBar() {
-        TODO("Not yet implemented")
-    }
-
-    override fun hideProgressBar() {
-        TODO("Not yet implemented")
-    }
-
     override fun showError(errorMessage: String) {
-        TODO("Not yet implemented")
+        Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show()
     }
 }

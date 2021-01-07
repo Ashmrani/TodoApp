@@ -1,9 +1,11 @@
 package com.example.todoapp.todo.list
 
+import com.example.domain.todo.model.Todo
+
 interface TodoContract {
 
     interface View {
-        fun addTodo()
+        fun showTodo(todo: List<Todo>)
         fun showProgressBar()
         fun hideProgressBar()
         fun showError(errorMessage: String)
@@ -13,6 +15,5 @@ interface TodoContract {
         fun onViewCreated()
         fun onAttachView(view: View)
         fun onDetachView()
-        fun onAddTodo()
     }
 }

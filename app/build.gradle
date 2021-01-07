@@ -88,6 +88,7 @@ dependencies {
     implementation "androidx.multidex:multidex:$multidex_version"
     implementation "androidx.constraintlayout:constraintlayout:$constraintlayout_version"
     implementation "androidx.preference:preference:$preference_version"
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
 
     // Material
     implementation "com.google.android.material:material:$material_version"
